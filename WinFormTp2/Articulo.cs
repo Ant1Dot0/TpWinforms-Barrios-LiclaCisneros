@@ -11,8 +11,8 @@ namespace WinFormTp2
         public string codigo { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public Marca id { get; set; }
-        public Categoria cod { get; set; }
+        public Marca marca { get; set; }
+        public Categoria categoria { get; set; }
         public string UrlImagen { get; set; }
         public float Precio { get; set; }
 
