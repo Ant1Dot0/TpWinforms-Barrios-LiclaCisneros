@@ -13,37 +13,31 @@ namespace Negocio
         public List<Articulo> listar()
         {
             List<Articulo> lista = new List<Articulo>();
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
-            SqlDataReader lector;
+            AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                conexion.ConnectionString = " server =.\\SQLEXPRESS; database =CATALOGO_DB; integrated security = true";
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Codigo, Nombre, A.Descripcion,  ImagenUrl, Precio, m.Descripcion AS MARCA,C.Descripcion AS CATEGORIA from ARTICULOS A, Marcas M , CATEGORIAS C WHERE A.IdMarca = M.Id AND C.ID = A.IdCategoria";
-                comando.Connection = conexion;
 
-                conexion.Open();
-                lector = comando.ExecuteReader();
+                datos.setearQuery("SELECT Codigo, Nombre, A.Descripcion,  ImagenUrl, Precio, m.Descripcion AS MARCA,C.Descripcion AS CATEGORIA from ARTICULOS A, Marcas M , CATEGORIAS C WHERE A.IdMarca = M.Id AND C.ID = A.IdCategoria");
+                datos.EjecutarLectura(); 
+                   
 
-
-                while (lector.Read())
+                while (datos.Lector.Read())
                 {
 
                     Articulo aux = new Articulo();
 
-                    aux.codigo = (string)lector["Codigo"];
-                    aux.Nombre = (string)lector["Nombre"];
-                    aux.Descripcion = (string)lector["A.Descripcion"];
+                    aux.codigo = (string)datos.Lector["Codigo"];
+                    aux.Nombre = (string)datos.Lector["Nombre"];
+                    aux.Descripcion = (string)datos.Lector["A.Descripcion"];
 
                     aux.marca = new Marca();
-                    aux.marca.descripcion = (string)lector["Marca"];
+                    aux.marca.descripcion = (string)datos.Lector["Marca"];
 
                     aux.categoria = new Categoria();
-                    aux.categoria.descripcion = (string)lector["Categoria"];
-                    aux.UrlImagen = (String)lector["ImagenUrl"];
-                    aux.Precio = (float)lector["Precio"];
+                    aux.categoria.descripcion = (string)datos.Lector["Categoria"];
+                    aux.UrlImagen = (String)datos.Lector["ImagenUrl"];
+                    aux.Precio = (float)datos.Lector["Precio"];
 
                     lista.Add(aux);
                 
@@ -54,7 +48,11 @@ namespace Negocio
             catch ( Exception ex)
             {
 
-                throw;
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
 
         }
