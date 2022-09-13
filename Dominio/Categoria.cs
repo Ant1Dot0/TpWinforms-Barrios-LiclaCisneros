@@ -4,18 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormTp2
+namespace Dominio
 {
-    class Marca
+    public class Categoria
     {
-        public int id { get; set; }
-        public string descripcion { get; set; }
+        public int cod { get; set; }
 
+        public string descripcion { get; set; }
 
         public override string ToString()
         {
             return descripcion;
         }
-
     }
 }
