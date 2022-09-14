@@ -32,5 +32,21 @@ namespace WinFormTp2
             ventana.MdiParent = this;
             ventana.Show();
         }
+
+        private void mostrarTodosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType() == typeof(FrmListar))//me devuelve el tipo de objeto qu ees
+                {
+                    MessageBox.Show("Ventana ya abierta ", "AVISO");
+                    return;
+                }
+            }
+
+            FrmListar ventana = new FrmListar();
+            ventana.MdiParent = this;
+            ventana.Show();
+        }
     }
 }

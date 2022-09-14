@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dominio;
+using Negocio;
 
 namespace WinFormTp2
 {
@@ -15,6 +17,19 @@ namespace WinFormTp2
         public FrmListar()
         {
             InitializeComponent();
+        }
+
+        private void FrmListar_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.listar();
+        
         }
     }
 }
