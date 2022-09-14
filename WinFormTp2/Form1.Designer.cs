@@ -158,6 +158,7 @@
             this.MainMenuStrip = this.menuStripArticulos;
             this.Name = "FrmPrincipal";
             this.Text = "Gestion de articulos";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStripArticulos.ResumeLayout(false);
             this.menuStripArticulos.PerformLayout();
             this.ResumeLayout(false);

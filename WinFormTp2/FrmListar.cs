@@ -14,6 +14,7 @@ namespace WinFormTp2
 {
     public partial class FrmListar : Form
     {
+        private List<Articulo> listaArticulo;
         public FrmListar()
         {
             InitializeComponent();
@@ -28,8 +29,28 @@ namespace WinFormTp2
         {
 
             ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvArticulos.DataSource = negocio.listar();
-        
+            listaArticulo = negocio.listar();
+            dgvArticulos.DataSource = listaArticulo;
+            pbArticulo.Load(listaArticulo[0].UrlImagen);
+        }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo artSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            CargarImagen(artSeleccionado.UrlImagen);
+        }
+
+        private void CargarImagen(string imagen)
+        {
+            try
+            {
+                pbArticulo.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pbArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
+                
+            }
         }
     }
 }

@@ -31,7 +31,9 @@
             this.lblListar = new System.Windows.Forms.Label();
             this.btnListar = new System.Windows.Forms.Button();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
+            this.pbArticulo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblListar
@@ -64,12 +66,23 @@
             this.dgvArticulos.RowTemplate.Height = 28;
             this.dgvArticulos.Size = new System.Drawing.Size(762, 306);
             this.dgvArticulos.TabIndex = 2;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
+            // 
+            // pbArticulo
+            // 
+            this.pbArticulo.Location = new System.Drawing.Point(819, 68);
+            this.pbArticulo.Name = "pbArticulo";
+            this.pbArticulo.Size = new System.Drawing.Size(294, 306);
+            this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbArticulo.TabIndex = 3;
+            this.pbArticulo.TabStop = false;
             // 
             // FrmListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(786, 457);
+            this.ClientSize = new System.Drawing.Size(1174, 457);
+            this.Controls.Add(this.pbArticulo);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.btnListar);
             this.Controls.Add(this.lblListar);
@@ -78,6 +91,7 @@
             this.Text = "Listar Articulos";
             this.Load += new System.EventHandler(this.FrmListar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -88,5 +102,6 @@
         private System.Windows.Forms.Label lblListar;
         private System.Windows.Forms.Button btnListar;
         private System.Windows.Forms.DataGridView dgvArticulos;
+        private System.Windows.Forms.PictureBox pbArticulo;
     }
 }
