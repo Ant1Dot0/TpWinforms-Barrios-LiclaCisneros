@@ -70,5 +70,23 @@ namespace WinFormTp2
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void txtbUrl_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtbUrl.Text);
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbUrlImagen.Load(imagen);
+            }
+            catch (Exception ex)
+            {
+                pbUrlImagen.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
+            }
+        }
+
     }
 }

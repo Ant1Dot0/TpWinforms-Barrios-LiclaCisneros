@@ -39,7 +39,12 @@ namespace Negocio
                     aux.categoria = new Categoria();
                     aux.categoria.descripcion = (string)datos.Lector.GetString(4);
 
-                    aux.UrlImagen = (string)datos.Lector.GetString(5);
+                    //if(!(datos.Lector.IsDBNull(datos.Lector.GetOrdinal("ImagenUrl"))))
+                    //  aux.UrlImagen = (string)datos.Lector.GetString(5);
+
+                    if (!(datos.Lector["ImagenUrl"] is DBNull))
+                        aux.UrlImagen = (string)datos.Lector.GetString(5);
+
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
 
