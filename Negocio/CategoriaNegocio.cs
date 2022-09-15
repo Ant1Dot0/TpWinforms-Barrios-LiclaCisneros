@@ -25,7 +25,7 @@ namespace Negocio
                 {
                     Categoria aux = new Categoria();
 
-                    aux.descripcion = (string)datos.Lector["Descripcion"];
+                    aux.descripcion = (string)datos.Lector["Categoria"];
                     aux.cod = (int)datos.Lector["id"];
 
                     lista.Add(aux);

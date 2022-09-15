@@ -48,5 +48,10 @@ namespace WinFormTp2
             ventana.MdiParent = this;
             ventana.Show();
         }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

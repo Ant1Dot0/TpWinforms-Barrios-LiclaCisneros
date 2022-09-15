@@ -159,6 +159,7 @@
             this.Name = "FrmPrincipal";
             this.Text = "Gestion de articulos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load);
             this.menuStripArticulos.ResumeLayout(false);
             this.menuStripArticulos.PerformLayout();
             this.ResumeLayout(false);

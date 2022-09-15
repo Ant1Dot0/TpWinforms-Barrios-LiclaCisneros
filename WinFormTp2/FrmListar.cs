@@ -31,7 +31,8 @@ namespace WinFormTp2
             ArticuloNegocio negocio = new ArticuloNegocio();
             listaArticulo = negocio.listar();
             dgvArticulos.DataSource = listaArticulo;
-            pbArticulo.Load(listaArticulo[0].UrlImagen);
+            dgvArticulos.Columns["UrlImagen"].Visible = false;
+            CargarImagen(listaArticulo[0].UrlImagen);
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -51,6 +52,13 @@ namespace WinFormTp2
                 pbArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
                 
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            datos.cerrarConexion();
+            this.Close();
         }
     }
 }
