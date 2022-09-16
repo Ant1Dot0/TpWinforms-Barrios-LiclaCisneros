@@ -41,12 +41,15 @@
             // 
             this.dgvModificar.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvModificar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvModificar.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvModificar.Location = new System.Drawing.Point(31, 92);
             this.dgvModificar.Name = "dgvModificar";
             this.dgvModificar.RowHeadersWidth = 62;
             this.dgvModificar.RowTemplate.Height = 28;
+            this.dgvModificar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvModificar.Size = new System.Drawing.Size(813, 391);
             this.dgvModificar.TabIndex = 0;
+            this.dgvModificar.SelectionChanged += new System.EventHandler(this.dgvModificar_SelectionChanged);
             // 
             // pbModificar
             // 

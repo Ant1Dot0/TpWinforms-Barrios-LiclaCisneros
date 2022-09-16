@@ -26,6 +26,7 @@ namespace WinFormTp2
 
             InitializeComponent();
             this.articulo = articulo;
+            Text = "Modificar Pokemon";
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -40,10 +41,13 @@ namespace WinFormTp2
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Articulo articulo = new Articulo();
+            
             ArticuloNegocio negocio = new ArticuloNegocio(); 
             try
             {
+                if (articulo == null)
+                    articulo = new Articulo();
+             
                 articulo.codigo = txtbCodigo.Text;
                 articulo.Nombre = txtbNombre.Text;
                 articulo.Descripcion = txtbDescripcion.Text;
@@ -52,11 +56,17 @@ namespace WinFormTp2
                 articulo.marca = (Marca)cbxMarca.SelectedItem;
                 articulo.categoria =(Categoria)cbxCategoria.SelectedItem; 
 
-                negocio.agregar(articulo);
+                if(articulo.id != 0)
+                {
+                    negocio.modificar(articulo);
+                    MessageBox.Show("Modificado con exito");
+                }
+                else
+                {
+                    negocio.agregar(articulo);
+                    MessageBox.Show("Agregado con exito");
 
-                MessageBox.Show("Agregado con exito");
-                
-                
+                }
 
                 this.Close();
 
@@ -76,11 +86,11 @@ namespace WinFormTp2
             {
                 cbxMarca.DataSource = marNegocio.listar();
                 cbxMarca.ValueMember = "id";
-                cbxMarca.ValueMember = "descripcion";
+                cbxMarca.DisplayMember = "descripcion";
 
                 cbxCategoria.DataSource = catNegocio.listar();
                 cbxCategoria.ValueMember = "cod";
-                cbxCategoria.ValueMember = "descripcion";
+                cbxCategoria.DisplayMember = "descripcion";
 
 
                 if(articulo != null)
@@ -93,6 +103,12 @@ namespace WinFormTp2
                     cargarImagen(articulo.UrlImagen);
 
                     txtbPrecio.Text = articulo.Precio.ToString();
+
+                    cbxCategoria.SelectedValue = articulo.categoria.cod;
+                    cbxMarca.SelectedValue = articulo.marca.id;
+
+
+
                 }
 
             }

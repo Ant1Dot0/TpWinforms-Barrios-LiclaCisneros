@@ -46,7 +46,10 @@ namespace WinFormTp2
             {
                 listaArticulo = negocio.listar();
                 dgvArticulos.DataSource = listaArticulo;
+                dgvArticulos.Columns["id"].Visible = false;
                 dgvArticulos.Columns["UrlImagen"].Visible = false;
+                dgvArticulos.Columns["idMarca"].Visible = false;
+                dgvArticulos.Columns["idCaegoria"].Visible = false;
                 CargarImagen(listaArticulo[0].UrlImagen);
             }
             catch (Exception ex)

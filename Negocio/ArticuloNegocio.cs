@@ -19,7 +19,7 @@ namespace Negocio
             try
             {
 
-                datos.setearQuery("SELECT Codigo, Nombre, A.Descripcion as Descripcion, m.Descripcion AS MARCA,C.Descripcion AS CATEGORIA, ImagenUrl, Precio from ARTICULOS A, Marcas M , CATEGORIAS C WHERE A.IdMarca = M.Id AND C.ID = A.IdCategoria");
+                datos.setearQuery("SELECT a.Id as idarticulo, Codigo, Nombre, A.Descripcion as Descripcion, m.Descripcion AS MARCA,C.Descripcion AS CATEGORIA, ImagenUrl, Precio,m.id as idmarca,c.id as idcategoria from ARTICULOS A, Marcas M , CATEGORIAS C WHERE A.IdMarca = M.Id AND C.ID = A.IdCategoria");
                 datos.EjecutarLectura(); 
                    
 
@@ -28,25 +28,26 @@ namespace Negocio
 
                     Articulo aux = new Articulo();
 
-
-                    aux.codigo = (string)datos.Lector.GetString(0);
-                    aux.Nombre = (string)datos.Lector.GetString(1);
-                    aux.Descripcion = (string)datos.Lector.GetString(2);
+                    aux.id = datos.Lector.GetInt32(0);
+                    aux.codigo = (string)datos.Lector.GetString(1);
+                    aux.Nombre = (string)datos.Lector.GetString(2);
+                    aux.Descripcion = (string)datos.Lector.GetString(3);
                     
                     aux.marca = new Marca();
-                    aux.marca.descripcion = (string)datos.Lector.GetString(3);
+                    aux.marca.descripcion = (string)datos.Lector.GetString(4);
 
                     aux.categoria = new Categoria();
-                    aux.categoria.descripcion = (string)datos.Lector.GetString(4);
-
+                    aux.categoria.descripcion = (string)datos.Lector.GetString(5);
+                    
                     //if(!(datos.Lector.IsDBNull(datos.Lector.GetOrdinal("ImagenUrl"))))
                     //  aux.UrlImagen = (string)datos.Lector.GetString(5);
 
                     if (!(datos.Lector["ImagenUrl"] is DBNull))
-                        aux.UrlImagen = (string)datos.Lector.GetString(5);
+                        aux.UrlImagen = (string)datos.Lector.GetString(6);
 
                     aux.Precio = (decimal)datos.Lector["Precio"];
-
+                    aux.categoria.cod = (int)datos.Lector["idcategoria"];
+                    aux.marca.id = (int)datos.Lector["idmarca"];
 
                     lista.Add(aux);
                 
@@ -91,6 +92,30 @@ namespace Negocio
         public void modificar(Articulo modificar)
         {
 
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearQuery("UPDATE ARTICULOS SET CODIGO=@codigo,NOMBRE=@Nombre,DESCRIPCION=@Descripcion,IDMARCA=@idmarca,IDCATEGORIA=@idcaegoria,IMAGENURL=@UrlImagen,PRECIO=@Precio WHERE ID=@id");
+                
+                datos.setearParametros("@codigo", modificar.codigo);
+                datos.setearParametros("@Nombre", modificar.Nombre);
+                datos.setearParametros("@Descripcion", modificar.Descripcion);
+                datos.setearParametros("@idmarca", modificar.idMarca);
+                datos.setearParametros("@idcaegoria", modificar.idCaegoria);
+                datos.setearParametros("@UrlImagen", modificar.UrlImagen);
+                datos.setearParametros("Precio", modificar.Precio);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
 
     }

@@ -63,6 +63,8 @@ namespace WinFormTp2
                 listaArticulo = negocio.listar();
                 dgvModificar.DataSource = listaArticulo;
                 dgvModificar.Columns["UrlImagen"].Visible = false;
+                dgvModificar.Columns["idmarca"].Visible = false;
+                dgvModificar.Columns["idCaegoria"].Visible = false;
                 CargarImagen(listaArticulo[0].UrlImagen);
             }
             catch (Exception ex)
@@ -70,6 +72,12 @@ namespace WinFormTp2
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void dgvModificar_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo artSeleccionado = (Articulo)dgvModificar.CurrentRow.DataBoundItem;
+            CargarImagen(artSeleccionado.UrlImagen);
         }
     }
 }
