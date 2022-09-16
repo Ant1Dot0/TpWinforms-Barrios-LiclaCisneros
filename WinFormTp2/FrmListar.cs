@@ -28,6 +28,19 @@ namespace WinFormTp2
         private void btnListar_Click(object sender, EventArgs e)
         {
 
+            Cargar();
+
+        }
+
+        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
+        {
+            Articulo artSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            CargarImagen(artSeleccionado.UrlImagen);
+        }
+
+
+        public void Cargar()
+        {
             ArticuloNegocio negocio = new ArticuloNegocio();
             try
             {
@@ -41,12 +54,6 @@ namespace WinFormTp2
 
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
-        {
-            Articulo artSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            CargarImagen(artSeleccionado.UrlImagen);
         }
 
         private void CargarImagen(string imagen)
@@ -67,6 +74,11 @@ namespace WinFormTp2
             AccesoDatos datos = new AccesoDatos();
             datos.cerrarConexion();
             this.Close();
+        }
+
+        private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

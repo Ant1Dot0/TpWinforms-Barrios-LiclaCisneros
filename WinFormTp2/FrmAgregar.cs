@@ -12,11 +12,20 @@ using Negocio;
 
 namespace WinFormTp2
 {
+
     public partial class FrmAgregar : Form
     {
+        private Articulo articulo = null;
         public FrmAgregar()
         {
             InitializeComponent();
+        }
+
+        public FrmAgregar(Articulo articulo)
+        {
+
+            InitializeComponent();
+            this.articulo = articulo;
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -44,7 +53,11 @@ namespace WinFormTp2
                 articulo.categoria =(Categoria)cbxCategoria.SelectedItem; 
 
                 negocio.agregar(articulo);
+
                 MessageBox.Show("Agregado con exito");
+                
+                
+
                 this.Close();
 
             }
@@ -62,7 +75,26 @@ namespace WinFormTp2
             try
             {
                 cbxMarca.DataSource = marNegocio.listar();
+                cbxMarca.ValueMember = "id";
+                cbxMarca.ValueMember = "descripcion";
+
                 cbxCategoria.DataSource = catNegocio.listar();
+                cbxCategoria.ValueMember = "cod";
+                cbxCategoria.ValueMember = "descripcion";
+
+
+                if(articulo != null)
+                {
+                    txtbCodigo.Text = articulo.codigo;
+                    txtbDescripcion.Text = articulo.Descripcion;
+                    txtbNombre.Text = articulo.Nombre;
+                   
+                    txtbUrl.Text = articulo.UrlImagen;
+                    cargarImagen(articulo.UrlImagen);
+
+                    txtbPrecio.Text = articulo.Precio.ToString();
+                }
+
             }
             catch (Exception ex)
             {

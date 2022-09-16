@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,10 @@ namespace Dominio
 {
     public class Categoria
     {
+        [DisplayName("Codigo")]
         public int cod { get; set; }
 
+        [DisplayName("Categoría")]
         public string descripcion { get; set; }
 
         public override string ToString()

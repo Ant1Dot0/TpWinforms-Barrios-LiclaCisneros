@@ -53,5 +53,21 @@ namespace WinFormTp2
         {
 
         }
+
+        private void modificarElArticuloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (var item in Application.OpenForms)
+            {
+                if (item.GetType() == typeof(FrmModificar))//me devuelve el tipo de objeto qu ees
+                {
+                    MessageBox.Show("Ventana ya abierta ", "AVISO");
+                    return;
+                }
+            }
+
+            FrmModificar ventana = new FrmModificar();
+            ventana.MdiParent = this;
+            ventana.Show();
+        }
     }
 }
