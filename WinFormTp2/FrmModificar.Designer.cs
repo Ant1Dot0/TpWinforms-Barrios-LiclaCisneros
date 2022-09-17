@@ -49,6 +49,7 @@
             this.dgvModificar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvModificar.Size = new System.Drawing.Size(813, 391);
             this.dgvModificar.TabIndex = 0;
+            this.dgvModificar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvModificar_CellContentClick);
             this.dgvModificar.SelectionChanged += new System.EventHandler(this.dgvModificar_SelectionChanged);
             // 
             // pbModificar
@@ -59,6 +60,7 @@
             this.pbModificar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbModificar.TabIndex = 1;
             this.pbModificar.TabStop = false;
+            this.pbModificar.Click += new System.EventHandler(this.pbModificar_Click);
             // 
             // lblModificar
             // 

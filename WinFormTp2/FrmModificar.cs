@@ -79,5 +79,15 @@ namespace WinFormTp2
             Articulo artSeleccionado = (Articulo)dgvModificar.CurrentRow.DataBoundItem;
             CargarImagen(artSeleccionado.UrlImagen);
         }
+
+        private void dgvModificar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void pbModificar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

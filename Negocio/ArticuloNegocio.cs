@@ -96,12 +96,12 @@ namespace Negocio
             try
             {
                 datos.setearQuery("UPDATE ARTICULOS SET CODIGO=@codigo,NOMBRE=@Nombre,DESCRIPCION=@Descripcion,IDMARCA=@idmarca,IDCATEGORIA=@idcaegoria,IMAGENURL=@UrlImagen,PRECIO=@Precio WHERE ID=@id");
-                
+                datos.setearParametros("@id", modificar.id);
                 datos.setearParametros("@codigo", modificar.codigo);
                 datos.setearParametros("@Nombre", modificar.Nombre);
                 datos.setearParametros("@Descripcion", modificar.Descripcion);
-                datos.setearParametros("@idmarca", modificar.idMarca);
-                datos.setearParametros("@idcaegoria", modificar.idCaegoria);
+                datos.setearParametros("@idmarca", modificar.marca.id);
+                datos.setearParametros("@idcaegoria", modificar.categoria.cod);
                 datos.setearParametros("@UrlImagen", modificar.UrlImagen);
                 datos.setearParametros("Precio", modificar.Precio);
 
@@ -118,5 +118,23 @@ namespace Negocio
             }
         }
 
+
+
+        public void eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+
+                datos.setearQuery("delete from ARTICULOS where id=@id");
+                datos.setearParametros("@id", id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
     }
 }

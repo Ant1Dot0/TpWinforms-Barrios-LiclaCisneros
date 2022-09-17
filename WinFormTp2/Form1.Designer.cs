@@ -35,7 +35,6 @@
             this.modificarElArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarUnArticuloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarTodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listadoDeArticulosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mostrarTodosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarPorMarcaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,23 +91,17 @@
             // eliminarArticuloToolStripMenuItem
             // 
             this.eliminarArticuloToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.eliminarUnArticuloToolStripMenuItem,
-            this.eliminarTodosToolStripMenuItem});
+            this.eliminarUnArticuloToolStripMenuItem});
             this.eliminarArticuloToolStripMenuItem.Name = "eliminarArticuloToolStripMenuItem";
-            this.eliminarArticuloToolStripMenuItem.Size = new System.Drawing.Size(156, 29);
-            this.eliminarArticuloToolStripMenuItem.Text = "Eliminar Articulo";
+            this.eliminarArticuloToolStripMenuItem.Size = new System.Drawing.Size(90, 29);
+            this.eliminarArticuloToolStripMenuItem.Text = "Eliminar";
             // 
             // eliminarUnArticuloToolStripMenuItem
             // 
             this.eliminarUnArticuloToolStripMenuItem.Name = "eliminarUnArticuloToolStripMenuItem";
-            this.eliminarUnArticuloToolStripMenuItem.Size = new System.Drawing.Size(264, 34);
-            this.eliminarUnArticuloToolStripMenuItem.Text = "Eliminar un articulo";
-            // 
-            // eliminarTodosToolStripMenuItem
-            // 
-            this.eliminarTodosToolStripMenuItem.Name = "eliminarTodosToolStripMenuItem";
-            this.eliminarTodosToolStripMenuItem.Size = new System.Drawing.Size(264, 34);
-            this.eliminarTodosToolStripMenuItem.Text = "Eliminar todos";
+            this.eliminarUnArticuloToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.eliminarUnArticuloToolStripMenuItem.Text = "Eliminar Articulo";
+            this.eliminarUnArticuloToolStripMenuItem.Click += new System.EventHandler(this.eliminarUnArticuloToolStripMenuItem_Click);
             // 
             // listadoDeArticulosToolStripMenuItem
             // 
@@ -177,7 +170,6 @@
         private System.Windows.Forms.ToolStripMenuItem modificarElArticuloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarArticuloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarUnArticuloToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarTodosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listadoDeArticulosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mostrarTodosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarPorMarcaToolStripMenuItem;

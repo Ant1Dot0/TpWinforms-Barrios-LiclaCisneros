@@ -69,5 +69,18 @@ namespace WinFormTp2
             ventana.MdiParent = this;
             ventana.Show();
         }
+
+        private void eliminarTodosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void eliminarUnArticuloToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+
+            FrmEliminar eliminar = new FrmEliminar();
+            eliminar.ShowDialog();
+        }
     }
 }
