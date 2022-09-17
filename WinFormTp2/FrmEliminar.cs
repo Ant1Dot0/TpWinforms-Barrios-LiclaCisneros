@@ -28,9 +28,18 @@ namespace WinFormTp2
 
             try
             {
-                seleccionado = (Articulo)dgvEliminar.CurrentRow.DataBoundItem;
-                negocio.eliminar(seleccionado.id);
-                cargar();
+                DialogResult resp=MessageBox.Show("El articulo va a eliminarse¿Desea continuar?","Eliminar articulo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                
+                if(resp == DialogResult.Yes)
+                {
+                    seleccionado = (Articulo)dgvEliminar.CurrentRow.DataBoundItem;
+                    negocio.eliminar(seleccionado.id);
+                    cargar();
+                }
+                else
+                {
+
+                }
             }
             catch (Exception ex)
             {
