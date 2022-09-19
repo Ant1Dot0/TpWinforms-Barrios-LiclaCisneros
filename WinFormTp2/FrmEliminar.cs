@@ -111,7 +111,7 @@ namespace WinFormTp2
             List<Articulo> listaFiltro;
             string filtro = txtFiltrar.Text;
 
-            if (filtro != "")
+            if (filtro.Length >= 2)
             {
                 listaFiltro = listaArticulo.FindAll(item => item.Nombre.ToUpper().Contains(filtro.ToUpper()) || item.marca.descripcion.ToUpper().Contains(filtro.ToUpper()) || item.categoria.descripcion.ToUpper().Contains(filtro.ToUpper()));
             }

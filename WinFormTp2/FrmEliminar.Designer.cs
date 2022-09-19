@@ -104,14 +104,14 @@
             this.lblFiltrar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltrar.Location = new System.Drawing.Point(49, 84);
             this.lblFiltrar.Name = "lblFiltrar";
-            this.lblFiltrar.Size = new System.Drawing.Size(76, 21);
+            this.lblFiltrar.Size = new System.Drawing.Size(115, 21);
             this.lblFiltrar.TabIndex = 7;
-            this.lblFiltrar.Text = "Buscar: ";
+            this.lblFiltrar.Text = "Filtro rapido: ";
             // 
             // txtFiltrar
             // 
             this.txtFiltrar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFiltrar.Location = new System.Drawing.Point(152, 81);
+            this.txtFiltrar.Location = new System.Drawing.Point(179, 81);
             this.txtFiltrar.Name = "txtFiltrar";
             this.txtFiltrar.Size = new System.Drawing.Size(194, 28);
             this.txtFiltrar.TabIndex = 8;
