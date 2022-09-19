@@ -41,7 +41,7 @@
             // 
             this.lblListar.AutoSize = true;
             this.lblListar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblListar.Location = new System.Drawing.Point(304, 24);
+            this.lblListar.Location = new System.Drawing.Point(356, 23);
             this.lblListar.Name = "lblListar";
             this.lblListar.Size = new System.Drawing.Size(188, 29);
             this.lblListar.TabIndex = 0;
@@ -49,28 +49,30 @@
             // 
             // btnListar
             // 
+            this.btnListar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnListar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnListar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListar.Location = new System.Drawing.Point(12, 408);
+            this.btnListar.Location = new System.Drawing.Point(85, 492);
             this.btnListar.Name = "btnListar";
-            this.btnListar.Size = new System.Drawing.Size(196, 40);
+            this.btnListar.Size = new System.Drawing.Size(196, 55);
             this.btnListar.TabIndex = 1;
             this.btnListar.Text = "Mostrar Articulos";
-            this.btnListar.UseVisualStyleBackColor = true;
+            this.btnListar.UseVisualStyleBackColor = false;
             this.btnListar.Click += new System.EventHandler(this.btnListar_Click);
             // 
             // dgvArticulos
             // 
-            this.dgvArticulos.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dgvArticulos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvArticulos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvArticulos.Location = new System.Drawing.Point(12, 68);
+            this.dgvArticulos.Location = new System.Drawing.Point(28, 111);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersWidth = 62;
             this.dgvArticulos.RowTemplate.Height = 28;
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvArticulos.Size = new System.Drawing.Size(814, 306);
+            this.dgvArticulos.Size = new System.Drawing.Size(875, 349);
             this.dgvArticulos.TabIndex = 2;
             this.dgvArticulos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvArticulos_CellContentClick);
             this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
@@ -79,29 +81,31 @@
             // 
             this.pbArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbArticulo.Location = new System.Drawing.Point(852, 68);
+            this.pbArticulo.Location = new System.Drawing.Point(952, 160);
             this.pbArticulo.Name = "pbArticulo";
-            this.pbArticulo.Size = new System.Drawing.Size(294, 306);
+            this.pbArticulo.Size = new System.Drawing.Size(265, 270);
             this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbArticulo.TabIndex = 3;
             this.pbArticulo.TabStop = false;
             // 
             // btnCancelar
             // 
+            this.btnCancelar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(579, 408);
+            this.btnCancelar.Location = new System.Drawing.Point(636, 492);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(171, 40);
+            this.btnCancelar.Size = new System.Drawing.Size(196, 55);
             this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cerrar ventana";
-            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.UseVisualStyleBackColor = false;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // FrmListar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 474);
+            this.ClientSize = new System.Drawing.Size(1275, 569);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.pbArticulo);
             this.Controls.Add(this.dgvArticulos);

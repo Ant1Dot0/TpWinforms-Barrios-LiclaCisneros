@@ -65,9 +65,7 @@ namespace WinFormTp2
             {
                 listaArticulo = negocio.listar();
                 dgvEliminar.DataSource = listaArticulo;
-                dgvEliminar.Columns["UrlImagen"].Visible = false;
-                dgvEliminar.Columns["idmarca"].Visible = false;
-                dgvEliminar.Columns["idCaegoria"].Visible = false;
+                ocultarColumnas();
                 CargarImagen(listaArticulo[0].UrlImagen);
             }
             catch (Exception ex)
@@ -77,6 +75,13 @@ namespace WinFormTp2
             }
         }
 
+        private void ocultarColumnas()
+        {
+            dgvEliminar.Columns["id"].Visible = false;
+            dgvEliminar.Columns["UrlImagen"].Visible = false;
+            dgvEliminar.Columns["idmarca"].Visible = false;
+            dgvEliminar.Columns["idCaegoria"].Visible = false;
+        }
 
         private void CargarImagen(string imagen)
         {
@@ -93,8 +98,34 @@ namespace WinFormTp2
 
         private void dgvEliminar_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo Seleccionado = (Articulo)dgvEliminar.CurrentRow.DataBoundItem;
-            CargarImagen(Seleccionado.UrlImagen);
+            if(dgvEliminar.CurrentRow != null)
+            {
+                Articulo Seleccionado = (Articulo)dgvEliminar.CurrentRow.DataBoundItem;
+                CargarImagen(Seleccionado.UrlImagen);
+            }
+        
+        }
+
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltro;
+            string filtro = txtFiltrar.Text;
+
+            if (filtro != "")
+            {
+                listaFiltro = listaArticulo.FindAll(item => item.Nombre.ToUpper().Contains(filtro.ToUpper()) || item.marca.descripcion.ToUpper().Contains(filtro.ToUpper()) || item.categoria.descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+
+                listaFiltro = listaArticulo;
+
+            }
+
+
+            dgvEliminar.DataSource = null;
+            dgvEliminar.DataSource = listaFiltro;
+            ocultarColumnas();
         }
     }
 }
