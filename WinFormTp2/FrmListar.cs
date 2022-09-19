@@ -92,5 +92,27 @@ namespace WinFormTp2
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulo> listaFiltro;
+            string filtro = txtFiltro.Text;
+
+            if (filtro.Length >= 2)
+            {
+                listaFiltro = listaArticulo.FindAll(item => item.Nombre.ToUpper().Contains(filtro.ToUpper()) || item.marca.descripcion.ToUpper().Contains(filtro.ToUpper()) || item.categoria.descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+
+                listaFiltro = listaArticulo;
+
+            }
+
+
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaFiltro;
+            ocultarColumnas();
+        }
     }
 }
