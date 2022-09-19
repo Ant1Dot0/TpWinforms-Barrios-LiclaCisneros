@@ -40,7 +40,7 @@
             this.lblCriterio = new System.Windows.Forms.Label();
             this.cbCriterio = new System.Windows.Forms.ComboBox();
             this.lblFiltroAvanzado = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
             this.btnFiltroAvanzado = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).BeginInit();
@@ -180,13 +180,13 @@
             this.lblFiltroAvanzado.TabIndex = 11;
             this.lblFiltroAvanzado.Text = "Filtro";
             // 
-            // textBox1
+            // txtFiltroAvanzado
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(642, 174);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 28);
-            this.textBox1.TabIndex = 12;
+            this.txtFiltroAvanzado.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFiltroAvanzado.Location = new System.Drawing.Point(642, 174);
+            this.txtFiltroAvanzado.Name = "txtFiltroAvanzado";
+            this.txtFiltroAvanzado.Size = new System.Drawing.Size(166, 28);
+            this.txtFiltroAvanzado.TabIndex = 12;
             // 
             // btnFiltroAvanzado
             // 
@@ -197,6 +197,7 @@
             this.btnFiltroAvanzado.TabIndex = 13;
             this.btnFiltroAvanzado.Text = "Buscar";
             this.btnFiltroAvanzado.UseVisualStyleBackColor = true;
+            this.btnFiltroAvanzado.Click += new System.EventHandler(this.btnFiltroAvanzado_Click);
             // 
             // FrmListar
             // 
@@ -204,7 +205,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1275, 697);
             this.Controls.Add(this.btnFiltroAvanzado);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtFiltroAvanzado);
             this.Controls.Add(this.lblFiltroAvanzado);
             this.Controls.Add(this.cbCriterio);
             this.Controls.Add(this.lblCriterio);
@@ -242,7 +243,7 @@
         private System.Windows.Forms.Label lblCriterio;
         private System.Windows.Forms.ComboBox cbCriterio;
         private System.Windows.Forms.Label lblFiltroAvanzado;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtFiltroAvanzado;
         private System.Windows.Forms.Button btnFiltroAvanzado;
     }
 }

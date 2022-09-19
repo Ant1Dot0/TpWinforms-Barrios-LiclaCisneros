@@ -135,5 +135,25 @@ namespace WinFormTp2
                 cbCriterio.Items.Add("Contiene ");
             }
         }
+
+        private void btnFiltroAvanzado_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                string campo = cbCampo.SelectedItem.ToString();
+                string criterio = cbCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
     }
 }

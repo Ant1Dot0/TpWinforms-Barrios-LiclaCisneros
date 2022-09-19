@@ -19,7 +19,7 @@ namespace Negocio
             try
             {
 
-                datos.setearQuery("SELECT a.Id as idarticulo, Codigo, Nombre, A.Descripcion as Descripcion, m.Descripcion AS MARCA,C.Descripcion AS CATEGORIA, ImagenUrl, Precio,m.id as idmarca,c.id as idcategoria from ARTICULOS A, Marcas M , CATEGORIAS C WHERE A.IdMarca = M.Id AND C.ID = A.IdCategoria");
+                datos.setearQuery("SELECT A.ID, A.IDMARCA, A.IDCATEGORIA,A.DESCRIPCION,CODIGO,NOMBRE, M.DESCRIPCION, C.DESCRIPCION,IMAGENURL,PRECIO,M.ID,C.ID FROM ARTICULOS AS A LEFT JOIN MARCAS M ON A.IdMarca = M.ID LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.ID");
                 datos.EjecutarLectura(); 
                    
 
@@ -119,7 +119,24 @@ namespace Negocio
         }
 
 
+        public List<Articulo> filtrar(string campo, string criterio, string filtro)
+        {
+            List<Articulo> lista = new List<Articulo>();
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                string consulta = "SELECT A.ID, A.IDMARCA, A.IDCATEGORIA,A.DESCRIPCION,CODIGO,NOMBRE, M.DESCRIPCION, C.DESCRIPCION,IMAGENURL,PRECIO,M.ID,C.ID FROM ARTICULOS AS A LEFT JOIN MARCAS M ON A.IdMarca = M.ID LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.ID";
+                datos.setearQuery();
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public void eliminar(int id)
         {
             try
