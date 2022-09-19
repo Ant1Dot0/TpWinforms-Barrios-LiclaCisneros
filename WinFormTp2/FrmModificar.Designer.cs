@@ -118,6 +118,7 @@
             this.txtFiltrar.Name = "txtFiltrar";
             this.txtFiltrar.Size = new System.Drawing.Size(195, 28);
             this.txtFiltrar.TabIndex = 6;
+            this.txtFiltrar.TextChanged += new System.EventHandler(this.txtFiltrar_TextChanged);
             // 
             // btnBuscar
             // 

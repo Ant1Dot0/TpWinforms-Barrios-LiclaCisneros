@@ -120,5 +120,10 @@ namespace WinFormTp2
             dgvModificar.DataSource = listaFiltro;
             ocultarColumnas();
         }
+
+        private void txtFiltrar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

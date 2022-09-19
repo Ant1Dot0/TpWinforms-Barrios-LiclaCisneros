@@ -22,14 +22,16 @@ namespace WinFormTp2
 
         private void FrmListar_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnListar_Click(object sender, EventArgs e)
         {
 
             Cargar();
-
+            cbCampo.Items.Add("Marca");
+            cbCampo.Items.Add("Categoria");
+            cbCampo.Items.Add("Precio");
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
