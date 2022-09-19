@@ -22,7 +22,10 @@ namespace WinFormTp2
 
         private void FrmListar_Load(object sender, EventArgs e)
         {
-
+            Cargar();
+            cbCampo.Items.Add("Marca");
+            cbCampo.Items.Add("Categoria");
+            cbCampo.Items.Add("Precio");
         }
 
         private void btnListar_Click(object sender, EventArgs e)
@@ -32,7 +35,6 @@ namespace WinFormTp2
             cbCampo.Items.Add("Marca");
             cbCampo.Items.Add("Categoria");
             cbCampo.Items.Add("Precio");
-        
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -124,16 +126,16 @@ namespace WinFormTp2
             if(opcion == "Precio")
             {
                 cbCriterio.Items.Clear();
-                cbCriterio.Items.Add("Mayor a ");
-                cbCriterio.Items.Add("Menor a ");
-                cbCriterio.Items.Add("Igual a ");
+                cbCriterio.Items.Add("Mayor a");
+                cbCriterio.Items.Add("Menor a");
+                cbCriterio.Items.Add("Igual a");
             }
             else
             {
                 cbCriterio.Items.Clear();
-                cbCriterio.Items.Add("Comienza con ");
-                cbCriterio.Items.Add("Termina con ");
-                cbCriterio.Items.Add("Contiene ");
+                cbCriterio.Items.Add("Comienza con");
+                cbCriterio.Items.Add("Termina con");
+                cbCriterio.Items.Add("Contiene");
             }
         }
 
@@ -149,6 +151,8 @@ namespace WinFormTp2
                 string criterio = cbCriterio.SelectedItem.ToString();
                 string filtro = txtFiltroAvanzado.Text;
                 dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+              
+             
 
             }
             catch (Exception ex)

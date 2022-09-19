@@ -19,9 +19,9 @@ namespace Negocio
             try
             {
 
-                datos.setearQuery("SELECT A.ID, A.IDMARCA, A.IDCATEGORIA,A.DESCRIPCION AS DESCRIPCION,CODIGO,NOMBRE, M.DESCRIPCION AS MARCADESCRIPCION, C.DESCRIPCION AS CATEGORIAC,IMAGENURL,PRECIO,M.ID AS IDMARC,C.ID AS IDCAT FROM ARTICULOS AS A LEFT JOIN MARCAS M ON A.IdMarca = M.ID LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.ID");
-                datos.EjecutarLectura(); 
-                   
+                datos.setearQuery("SELECT A.ID, A.IDMARCA, A.IDCATEGORIA,A.DESCRIPCION AS DESCRIPCION,CODIGO,NOMBRE, M.DESCRIPCION AS MARCADESCRIPCION, C.DESCRIPCION AS CATEGORIAC,IMAGENURL,PRECIO,M.ID AS IDMARC,C.ID AS IDCAT FROM ARTICULOS AS A LEFT JOIN MARCAS M ON A.IdMarca = M.ID LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.ID ");
+                datos.EjecutarLectura();
+
 
                 while (datos.Lector.Read())
                 {
@@ -33,16 +33,17 @@ namespace Negocio
                     {
                         aux.codigo = (string)datos.Lector["CODIGO"];
                     }
-                        
+
                     if (!(datos.Lector["NOMBRE"] is DBNull))
                         aux.Nombre = (string)datos.Lector["NOMBRE"];
                     if (!(datos.Lector["DESCRIPCION"] is DBNull))
                         aux.Descripcion = (string)datos.Lector["Descripcion"];
-                    
+
                     aux.marca = new Marca();
                     if (!(datos.Lector["MARCADESCRIPCION"] is DBNull))
                         aux.marca.descripcion = (string)datos.Lector["MARCADESCRIPCION"];
-
+                    else
+                        aux.marca.descripcion = "Sin marca";
 
                     aux.categoria = new Categoria();
                     if (!(datos.Lector["CATEGORIAC"] is DBNull))
@@ -64,11 +65,13 @@ namespace Negocio
                     }
                     else
                     {
-                        aux.categoria.cod = (int)0;
+                        aux.categoria.cod = 0;
                     }
-                        
+
                     if (!(datos.Lector["IDMARC"] is DBNull))
                         aux.marca.id = (int)datos.Lector["IDMARC"];
+                    else
+                        aux.marca.id = 0;
 
                     lista.Add(aux);
                 
@@ -147,50 +150,50 @@ namespace Negocio
 
             try
             {
-                string consulta = "SELECT A.ID, A.IDMARCA, A.IDCATEGORIA,A.DESCRIPCION,CODIGO,NOMBRE, M.DESCRIPCION, C.DESCRIPCION,IMAGENURL,PRECIO,M.ID,C.ID FROM ARTICULOS AS A LEFT JOIN MARCAS M ON A.IdMarca = M.ID LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.ID AND ";
-                
-                switch(campo)
+                string consulta = "SELECT A.ID, A.IDMARCA, A.IDCATEGORIA,A.DESCRIPCION AS DESCRIPCION,CODIGO,NOMBRE, M.DESCRIPCION AS MARCADESCRIPCION, C.DESCRIPCION AS CATEGORIAC,IMAGENURL,PRECIO,M.ID AS IDMARC,C.ID AS IDCAT FROM ARTICULOS AS A LEFT JOIN MARCAS M ON A.IdMarca = M.ID LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.ID WHERE ";
+
+                switch (campo)
                 {
 
                     case "Marca":////////////////////////////////////////////
-                        switch(criterio)
+                        switch (criterio)
                         {
                             case "Comienza con":
-                                consulta += "M.descripcion like '" + filtro + "%' ";
+                                consulta += "MARCADESCRIPCION like '" + filtro + "%' ";
                                 break;
                             case "Termina con":
-                                consulta += "M.descripcion like '%" + filtro + "' ";
+                                consulta += "MARCARDESCRIPCION like '%" + filtro + "' ";
                                 break;
                             default:
-                                consulta += "M.descripcion like '%" + filtro + "%' ";
+                                consulta += "MARCADESCRIPCION like '%" + filtro + "%' ";
                                 break;
                         }
                         break;
                     case "Categoria"://///////////////////////////////////////////
-                        switch(criterio)
+                        switch (criterio)
                         {
                             case "Comienza con":
-                                consulta += "C.descripcion like '" + filtro + "%' ";
+                                consulta += "CATEGORIAC like '" + filtro + "%' ";
                                 break;
                             case "Termina con":
-                                consulta += "C.descripcion like '%" + filtro + "'";
+                                consulta += "CATEGORIAC like '%" + filtro + "'";
                                 break;
                             default:
-                                consulta += "c.descripcion like '%" + filtro + "%'";
+                                consulta += "CATEGORIAC like '%" + filtro + "%'";
                                 break;
                         }
                         break;
                     case "Precio":////////////////////////////////////////
-                        switch(criterio)
+                        switch (criterio)
                         {
                             case "Mayor a":
-                                consulta += "Precio > " + filtro;
+                                consulta += "PRECIO > " + filtro;
                                 break;
                             case "Menor a":
-                                consulta += "Precio < " + filtro;
+                                consulta += "PRECIO < " + filtro;
                                 break;
                             default:
-                                consulta += "Precio = " + filtro;
+                                consulta += "PRECIO = " + filtro;
                                 break;
                         }
 
@@ -199,7 +202,7 @@ namespace Negocio
                     default:
                         break;
                 }
-                
+
                 datos.setearQuery(consulta);
                 datos.EjecutarLectura();
 
@@ -209,23 +212,49 @@ namespace Negocio
                     Articulo aux = new Articulo();
 
                     aux.id = datos.Lector.GetInt32(0);
-                    aux.codigo = (string)datos.Lector.GetString(1);
-                    aux.Nombre = (string)datos.Lector.GetString(2);
-                    aux.Descripcion = (string)datos.Lector.GetString(3);
+                    if (!(datos.Lector["CODIGO"] is DBNull))
+                    {
+                        aux.codigo = (string)datos.Lector["CODIGO"];
+                    }
+
+                    if (!(datos.Lector["NOMBRE"] is DBNull))
+                        aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    if (!(datos.Lector["DESCRIPCION"] is DBNull))
+                        aux.Descripcion = (string)datos.Lector["Descripcion"];
 
                     aux.marca = new Marca();
-                    aux.marca.descripcion = (string)datos.Lector.GetString(4);
+                    if (!(datos.Lector["MARCADESCRIPCION"] is DBNull))
+                        aux.marca.descripcion = (string)datos.Lector["MARCADESCRIPCION"];
+                    else
+                        aux.marca.descripcion = "Sin marca";
 
                     aux.categoria = new Categoria();
-                    aux.categoria.descripcion = (string)datos.Lector.GetString(5);
+                    if (!(datos.Lector["CATEGORIAC"] is DBNull))
+                        aux.categoria.descripcion = (string)datos.Lector["CATEGORIAC"];
+                    else
+                        aux.categoria.descripcion = "Sin categoria";
 
+                    //if(!(datos.Lector.IsDBNull(datos.Lector.GetOrdinal("ImagenUrl"))))
+                    //  aux.UrlImagen = (string)datos.Lector.GetString(5);
 
-                    if (!(datos.Lector["ImagenUrl"] is DBNull))
-                        aux.UrlImagen = (string)datos.Lector.GetString(6);
+                    if (!(datos.Lector["IMAGENURL"] is DBNull))
+                        aux.UrlImagen = (string)datos.Lector.GetString(8);
 
-                    aux.Precio = (decimal)datos.Lector["Precio"];
-                    aux.categoria.cod = (int)datos.Lector["idcategoria"];
-                    aux.marca.id = (int)datos.Lector["idmarca"];
+                    if (!(datos.Lector["PRECIO"] is DBNull))
+                        aux.Precio = (decimal)datos.Lector["PRECIO"];
+                    if (!(datos.Lector["IDCAT"] is DBNull))
+                    {
+                        aux.categoria.cod = (int)datos.Lector["IDCAT"];
+                    }
+                    else
+                    {
+                        aux.categoria.cod = 0;
+                    }
+
+                    if (!(datos.Lector["IDMARC"] is DBNull))
+                        aux.marca.id = (int)datos.Lector["IDMARC"];
+                    else
+                        aux.marca.id = 0;
 
                     lista.Add(aux);
 

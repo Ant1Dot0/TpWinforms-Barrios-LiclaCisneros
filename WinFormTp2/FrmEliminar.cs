@@ -91,7 +91,7 @@ namespace WinFormTp2
             }
             catch (Exception ex)
             {
-                pbEliminar.Load("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
+                pbEliminar.Load("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpeNtHuazDuKjPKkrRg9HSrip4rY8U9qbW_CNoOU6sfg&s");
 
             }
         }
