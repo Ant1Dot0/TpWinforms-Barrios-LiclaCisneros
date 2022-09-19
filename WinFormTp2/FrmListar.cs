@@ -34,8 +34,12 @@ namespace WinFormTp2
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
         {
-            Articulo artSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            CargarImagen(artSeleccionado.UrlImagen);
+            if(dgvArticulos.CurrentRow != null)
+            {
+                Articulo artSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                CargarImagen(artSeleccionado.UrlImagen);
+            }
+            
         }
 
 
@@ -46,10 +50,7 @@ namespace WinFormTp2
             {
                 listaArticulo = negocio.listar();
                 dgvArticulos.DataSource = listaArticulo;
-                dgvArticulos.Columns["id"].Visible = false;
-                dgvArticulos.Columns["UrlImagen"].Visible = false;
-                dgvArticulos.Columns["idMarca"].Visible = false;
-                dgvArticulos.Columns["idCaegoria"].Visible = false;
+                ocultarColumnas();
                 CargarImagen(listaArticulo[0].UrlImagen);
             }
             catch (Exception ex)
@@ -57,6 +58,14 @@ namespace WinFormTp2
 
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void ocultarColumnas()
+        {
+            dgvArticulos.Columns["id"].Visible = false;
+            dgvArticulos.Columns["UrlImagen"].Visible = false;
+            dgvArticulos.Columns["idMarca"].Visible = false;
+            dgvArticulos.Columns["idCaegoria"].Visible = false;
         }
 
         private void CargarImagen(string imagen)
