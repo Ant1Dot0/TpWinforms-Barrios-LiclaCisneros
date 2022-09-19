@@ -29,16 +29,26 @@ namespace Negocio
                     Articulo aux = new Articulo();
 
                     aux.id = datos.Lector.GetInt32(0);
-                    aux.codigo = (string)datos.Lector["CODIGO"];
-                    aux.Nombre = (string)datos.Lector["NOMBRE"];
+                    if (!(datos.Lector["CODIGO"] is DBNull))
+                    {
+                        aux.codigo = (string)datos.Lector["CODIGO"];
+                    }
+                        
+                    if (!(datos.Lector["NOMBRE"] is DBNull))
+                        aux.Nombre = (string)datos.Lector["NOMBRE"];
                     if (!(datos.Lector["DESCRIPCION"] is DBNull))
                         aux.Descripcion = (string)datos.Lector["Descripcion"];
                     
                     aux.marca = new Marca();
-                    aux.marca.descripcion = (string)datos.Lector["MARCADESCRIPCION"];
+                    if (!(datos.Lector["MARCADESCRIPCION"] is DBNull))
+                        aux.marca.descripcion = (string)datos.Lector["MARCADESCRIPCION"];
+
 
                     aux.categoria = new Categoria();
-                    aux.categoria.descripcion = (string)datos.Lector["CATEGORIAC"];
+                    if (!(datos.Lector["CATEGORIAC"] is DBNull))
+                        aux.categoria.descripcion = (string)datos.Lector["CATEGORIAC"];
+                    else
+                        aux.categoria.descripcion = "Sin categoria";
                     
                     //if(!(datos.Lector.IsDBNull(datos.Lector.GetOrdinal("ImagenUrl"))))
                     //  aux.UrlImagen = (string)datos.Lector.GetString(5);
@@ -48,8 +58,15 @@ namespace Negocio
 
                     if (!(datos.Lector["PRECIO"] is DBNull))
                         aux.Precio = (decimal)datos.Lector["PRECIO"];
-                    if (!(datos.Lector["IDCAT"] is DBNull))
+                    if (!(datos.Lector["IDCAT"] is DBNull) )
+                    {
                         aux.categoria.cod = (int)datos.Lector["IDCAT"];
+                    }
+                    else
+                    {
+                        aux.categoria.cod = (int)0;
+                    }
+                        
                     if (!(datos.Lector["IDMARC"] is DBNull))
                         aux.marca.id = (int)datos.Lector["IDMARC"];
 
