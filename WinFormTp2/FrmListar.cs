@@ -116,5 +116,24 @@ namespace WinFormTp2
             dgvArticulos.DataSource = listaFiltro;
             ocultarColumnas();
         }
+
+        private void cbCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cbCampo.SelectedItem.ToString();
+            if(opcion == "Precio")
+            {
+                cbCriterio.Items.Clear();
+                cbCriterio.Items.Add("Mayor a ");
+                cbCriterio.Items.Add("Menor a ");
+                cbCriterio.Items.Add("Igual a ");
+            }
+            else
+            {
+                cbCriterio.Items.Clear();
+                cbCriterio.Items.Add("Comienza con ");
+                cbCriterio.Items.Add("Termina con ");
+                cbCriterio.Items.Add("Contiene ");
+            }
+        }
     }
 }

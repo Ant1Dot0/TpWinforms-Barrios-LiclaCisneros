@@ -146,6 +146,7 @@
             this.cbCampo.Name = "cbCampo";
             this.cbCampo.Size = new System.Drawing.Size(166, 28);
             this.cbCampo.TabIndex = 8;
+            this.cbCampo.SelectedIndexChanged += new System.EventHandler(this.cbCampo_SelectedIndexChanged);
             // 
             // lblCriterio
             // 
