@@ -32,6 +32,7 @@ namespace WinFormTp2
             cbCampo.Items.Add("Marca");
             cbCampo.Items.Add("Categoria");
             cbCampo.Items.Add("Precio");
+        
         }
 
         private void dgvArticulos_SelectionChanged(object sender, EventArgs e)
@@ -138,6 +139,8 @@ namespace WinFormTp2
 
         private void btnFiltroAvanzado_Click(object sender, EventArgs e)
         {
+
+
             ArticuloNegocio negocio = new ArticuloNegocio();
 
             try
