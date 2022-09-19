@@ -132,63 +132,70 @@
             // lblCampo
             // 
             this.lblCampo.AutoSize = true;
+            this.lblCampo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCampo.Location = new System.Drawing.Point(47, 177);
             this.lblCampo.Name = "lblCampo";
-            this.lblCampo.Size = new System.Drawing.Size(60, 20);
+            this.lblCampo.Size = new System.Drawing.Size(67, 21);
             this.lblCampo.TabIndex = 7;
             this.lblCampo.Text = "Campo";
             // 
             // cbCampo
             // 
             this.cbCampo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCampo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCampo.FormattingEnabled = true;
             this.cbCampo.Location = new System.Drawing.Point(120, 173);
             this.cbCampo.Name = "cbCampo";
-            this.cbCampo.Size = new System.Drawing.Size(166, 28);
+            this.cbCampo.Size = new System.Drawing.Size(166, 29);
             this.cbCampo.TabIndex = 8;
             this.cbCampo.SelectedIndexChanged += new System.EventHandler(this.cbCampo_SelectedIndexChanged);
             // 
             // lblCriterio
             // 
             this.lblCriterio.AutoSize = true;
+            this.lblCriterio.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCriterio.Location = new System.Drawing.Point(308, 177);
             this.lblCriterio.Name = "lblCriterio";
-            this.lblCriterio.Size = new System.Drawing.Size(59, 20);
+            this.lblCriterio.Size = new System.Drawing.Size(68, 21);
             this.lblCriterio.TabIndex = 9;
             this.lblCriterio.Text = "Criterio";
             // 
             // cbCriterio
             // 
             this.cbCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCriterio.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCriterio.FormattingEnabled = true;
             this.cbCriterio.Location = new System.Drawing.Point(381, 173);
             this.cbCriterio.Name = "cbCriterio";
-            this.cbCriterio.Size = new System.Drawing.Size(166, 28);
+            this.cbCriterio.Size = new System.Drawing.Size(166, 29);
             this.cbCriterio.TabIndex = 10;
             // 
             // lblFiltroAvanzado
             // 
             this.lblFiltroAvanzado.AutoSize = true;
+            this.lblFiltroAvanzado.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltroAvanzado.Location = new System.Drawing.Point(569, 177);
             this.lblFiltroAvanzado.Name = "lblFiltroAvanzado";
-            this.lblFiltroAvanzado.Size = new System.Drawing.Size(44, 20);
+            this.lblFiltroAvanzado.Size = new System.Drawing.Size(50, 21);
             this.lblFiltroAvanzado.TabIndex = 11;
             this.lblFiltroAvanzado.Text = "Filtro";
             // 
             // textBox1
             // 
+            this.textBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(642, 174);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 26);
+            this.textBox1.Size = new System.Drawing.Size(166, 28);
             this.textBox1.TabIndex = 12;
             // 
             // btnFiltroAvanzado
             // 
+            this.btnFiltroAvanzado.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFiltroAvanzado.Location = new System.Drawing.Point(830, 167);
             this.btnFiltroAvanzado.Name = "btnFiltroAvanzado";
             this.btnFiltroAvanzado.Size = new System.Drawing.Size(100, 40);
             this.btnFiltroAvanzado.TabIndex = 13;
-            this.btnFiltroAvanzado.Text = "button1";
+            this.btnFiltroAvanzado.Text = "Buscar";
             this.btnFiltroAvanzado.UseVisualStyleBackColor = true;
             // 
             // FrmListar
