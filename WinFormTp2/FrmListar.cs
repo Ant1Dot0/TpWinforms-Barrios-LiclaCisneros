@@ -163,8 +163,11 @@ namespace WinFormTp2
                 if (cbCampo.SelectedIndex != -1 && cbCampo.SelectedIndex != -1 && txtFiltroAvanzado.Text != "")
                 {
                     string campo = cbCampo.SelectedItem.ToString();
+                    
                     string criterio = cbCriterio.SelectedItem.ToString();
+               
                     string filtro = txtFiltroAvanzado.Text;
+                    
                     dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
 
                 }
