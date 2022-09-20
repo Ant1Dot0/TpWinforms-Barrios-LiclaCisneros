@@ -145,12 +145,29 @@ namespace WinFormTp2
 
             ArticuloNegocio negocio = new ArticuloNegocio();
 
+
+
             try
             {
-                string campo = cbCampo.SelectedItem.ToString();
-                string criterio = cbCriterio.SelectedItem.ToString();
-                string filtro = txtFiltroAvanzado.Text;
-                dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+               // string campo = cbCampo.SelectedItem.ToString();
+                //string criterio = cbCriterio.SelectedItem.ToString();
+                //string filtro = txtFiltroAvanzado.Text;
+
+                if (cbCampo.SelectedIndex != -1 && cbCampo.SelectedIndex != -1 && txtFiltroAvanzado.Text != "")
+                {
+                    string campo = cbCampo.SelectedItem.ToString();
+                    string criterio = cbCriterio.SelectedItem.ToString();
+                    string filtro = txtFiltroAvanzado.Text;
+                    dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+                }
+                else
+                {
+                    if (txtFiltroAvanzado.Text == "")
+                        txtFiltroAvanzado.BackColor = Color.Red;
+
+                    MessageBox.Show("POR FAVOR CARGUE DATOS DE FILTRO");
+                }
+             
               
              
 
@@ -161,6 +178,21 @@ namespace WinFormTp2
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void txtFiltroAvanzado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtFiltroAvanzado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string opcion = cbCampo.SelectedItem.ToString();
+            if (opcion == "Precio")
+            {
+                if ((e.KeyChar < 48 || e.KeyChar > 59) && e.KeyChar != 8)
+                    e.Handled = true;
+            }
         }
     }
 }
