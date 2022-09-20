@@ -45,30 +45,42 @@ namespace WinFormTp2
             ArticuloNegocio negocio = new ArticuloNegocio(); 
             try
             {
-                if (articulo == null)
-                    articulo = new Articulo();
-             
-                articulo.codigo = txtbCodigo.Text;
-                articulo.Nombre = txtbNombre.Text;
-                articulo.Descripcion = txtbDescripcion.Text;
-                articulo.UrlImagen = txtbUrl.Text;
-                articulo.Precio = decimal.Parse(txtbPrecio.Text);
-                articulo.marca = (Marca)cbxMarca.SelectedItem;
-                articulo.categoria =(Categoria)cbxCategoria.SelectedItem; 
-
-                if(articulo.id != 0)
+                if(txtbCodigo.Text != "" && txtbNombre.Text != "" && txtbPrecio.Text  != "")
                 {
-                    negocio.modificar(articulo);
-                    MessageBox.Show("Modificado con exito");
+                    if (articulo == null)
+                        articulo = new Articulo();
+
+                    articulo.codigo = txtbCodigo.Text;
+                    articulo.Nombre = txtbNombre.Text;
+                    articulo.Descripcion = txtbDescripcion.Text;
+                    articulo.UrlImagen = txtbUrl.Text;
+                    articulo.Precio = decimal.Parse(txtbPrecio.Text);
+                    articulo.marca = (Marca)cbxMarca.SelectedItem;
+                    articulo.categoria = (Categoria)cbxCategoria.SelectedItem;
+
+                    if (articulo.id != 0)
+                    {
+                        negocio.modificar(articulo);
+                        MessageBox.Show("Modificado con exito");
+                    }
+                    else
+                    {
+                        negocio.agregar(articulo);
+                        MessageBox.Show("Agregado con exito");
+
+                    }
+
+                    this.Close();
                 }
+
                 else
                 {
-                    negocio.agregar(articulo);
-                    MessageBox.Show("Agregado con exito");
-
+                    txtbPrecio.BackColor = Color.Red;
+                    txtbNombre.BackColor = Color.Red;
+                    txtbCodigo.BackColor = Color.Red;
+                    MessageBox.Show("Por favor cargue Nombre, Codigo y Precio","ATENCION ");
                 }
 
-                this.Close();
 
             }
             catch (Exception ex)
@@ -136,5 +148,12 @@ namespace WinFormTp2
             }
         }
 
+        private void txtbPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+                if ((e.KeyChar < 48 || e.KeyChar > 59) && e.KeyChar != 8)
+                    e.Handled = true;
+            
+        }
     }
 }

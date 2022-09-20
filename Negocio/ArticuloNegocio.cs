@@ -150,7 +150,7 @@ namespace Negocio
 
             try
             {
-                string consulta = "SELECT A.ID, A.IDMARCA, A.IDCATEGORIA,A.DESCRIPCION AS DESCRIPCION,CODIGO,NOMBRE, M.DESCRIPCION, C.DESCRIPCION,IMAGENURL,PRECIO,M.ID AS IDMARC,C.ID AS IDCAT FROM ARTICULOS AS A LEFT JOIN MARCAS M ON A.IdMarca = M.ID LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.ID WHERE ";
+                string consulta = "SELECT A.ID, A.IDMARCA, A.IDCATEGORIA,A.DESCRIPCION AS DESCRIPCION,CODIGO,NOMBRE, M.DESCRIPCION AS MARCADESCRIPCION, C.DESCRIPCION,IMAGENURL,PRECIO,M.ID AS IDMARC,C.ID AS IDCAT FROM ARTICULOS AS A LEFT JOIN MARCAS M ON A.IdMarca = M.ID LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.ID WHERE ";
 
                 switch (campo)
                 {
@@ -159,13 +159,13 @@ namespace Negocio
                         switch (criterio)
                         {
                             case "Comienza con":
-                                consulta += "M.DESCRIPCION like '" + filtro + "%'";
+                                consulta += "MARCADESCRIPCION like '" + filtro + "%'";
                                 break;
                             case "Termina con":
-                                consulta += "M.DESCRIPCION like '%" + filtro + "'";
+                                consulta += "MARCADESCRIPCION like '%" + filtro + "'";
                                 break;
                             default:
-                                consulta += "M.DESCRIPCION like '%" + filtro + "%'";
+                                consulta += "MARCADESCRIPCION like '%" + filtro + "%'";
                                 break;
                         }
                         break;
@@ -173,7 +173,7 @@ namespace Negocio
                         switch (criterio)
                         {
                             case "Comienza con":
-                                consulta += "C.descripcion like '" + filtro + "%'";
+                                consulta += "C.descripcion like '" + filtro + "%' ";
                                 break;
                             case "Termina con":
                                 consulta += "C.descripcion like '%" + filtro + "'";

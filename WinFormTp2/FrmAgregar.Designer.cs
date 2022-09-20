@@ -159,6 +159,7 @@
             this.txtbPrecio.Name = "txtbPrecio";
             this.txtbPrecio.Size = new System.Drawing.Size(161, 28);
             this.txtbPrecio.TabIndex = 6;
+            this.txtbPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtbPrecio_KeyPress);
             // 
             // btnAgregar
             // 
