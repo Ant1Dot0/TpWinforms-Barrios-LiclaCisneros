@@ -130,7 +130,14 @@ namespace WinFormTp2
                 cbCriterio.Items.Add("Menor a");
                 cbCriterio.Items.Add("Igual a");
             }
-            else
+            else if(opcion =="Marca")
+            {
+                cbCriterio.Items.Clear();
+                cbCriterio.Items.Add("Comienza con");
+                cbCriterio.Items.Add("Termina con");
+                cbCriterio.Items.Add("Contiene");
+            }
+            else if(opcion =="Categoria")
             {
                 cbCriterio.Items.Clear();
                 cbCriterio.Items.Add("Comienza con");
@@ -159,6 +166,7 @@ namespace WinFormTp2
                     string criterio = cbCriterio.SelectedItem.ToString();
                     string filtro = txtFiltroAvanzado.Text;
                     dgvArticulos.DataSource = negocio.filtrar(campo, criterio, filtro);
+
                 }
                 else
                 {
@@ -167,9 +175,8 @@ namespace WinFormTp2
 
                     MessageBox.Show("POR FAVOR CARGUE DATOS DE FILTRO");
                 }
-             
-              
-             
+
+
 
             }
             catch (Exception ex)
